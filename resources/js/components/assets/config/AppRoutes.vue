@@ -95,7 +95,7 @@ const routes = [
                       next()
                     })
                     .catch(err=>{
-                      return next({ path: '/login'})
+                      return next({ path: '/'})
                     })
                   },
                 children: 
