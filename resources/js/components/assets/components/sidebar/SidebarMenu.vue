@@ -3,14 +3,14 @@ const sidebarMenu = [
   { path: '/adminstrator/dashboard', icon: 'fa fa-sitemap', title: 'Dashboard'},
   { path: '/adminstrator/faculty', icon: 'fa fa-store', title: 'Branches',
     children: [
-      { path: '/adminstrator/faculty/regular', title: 'Regular Employee' },
-      { path: '/adminstrator/faculty/casual', title: 'Casual Employee' },
+      { path: '/adminstrator/faculty/regular', title: 'Branch 1' },
+      { path: '/adminstrator/faculty/casual', title: 'Branch 2' },
     ]
   },
    { path: '/adminstrator/accounts', icon: 'fa fa-users', title: 'Accounts',
     children: [
-      { path: '/adminstrator/accounts/students', title: 'Purchase Order' },
-      { path: '/adminstrator/accounts/faculty', title: 'Account Faculty' }
+      { path: '/adminstrator/accounts/students', title: 'User 1' },
+      { path: '/adminstrator/accounts/faculty', title: 'User 2' }
     ]
   },
   // { 
