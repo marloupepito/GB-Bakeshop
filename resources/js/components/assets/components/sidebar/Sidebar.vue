@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<!-- BEGIN #sidebar -->
-		<div id="sidebar" class="app-sidebar" v-bind:class="{ 
+		<div id="sidebar" class="app-sidebar " v-bind:class="{ 
 			'app-sidebar-transparent': appOptions.appSidebarTransparent,
 			'app-sidebar-grid': appOptions.appSidebarGrid
 		}">
 			<!-- BEGIN scrollbar -->
-			<vue-custom-scrollbar class="app-sidebar-content" v-bind:class="{ 'h-100 ps': appOptions.appSidebarFixed }">
+			<vue-custom-scrollbar class="app-sidebar-content border border-danger " v-bind:class="{ 'h-100 ps': appOptions.appSidebarFixed }">
 				<!-- begin sidebar user -->
 				<sidebar-nav-profile v-if="!appOptions.appSidebarSearch"></sidebar-nav-profile>
 				<!-- end sidebar user -->

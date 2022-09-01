@@ -68,19 +68,14 @@ import UserLoginV3 from '../pages/User-login-v3.vue'
 import UserRegisterV3 from '../pages/User-register-v3.vue'
 import HelperCss from '../pages/Helper-css'
 
-import Account1 from '../../admin/Account1.vue'
-import Account2 from '../../admin/Account2.vue'
+import Administrator from '../../admin/Administrator.vue'
 import Dashboard from '../../admin/Dashboard.vue'
-import Faculty1 from '../../admin/Faculty1.vue'
-import Faculty2 from '../../admin/Faculty2.vue'
-import Questionaire from '../../admin/Questionair.vue'
-import Result1 from '../../admin/Result1.vue'
-import Result2 from '../../admin/Result2.vue'
-import Result3 from '../../admin/Result3.vue'
-import Schedule from '../../admin/Schedule.vue'
-import Administrator from  '../../admin/Administrator.vue'
-import Overall from '../../admin/Overall.vue'
-import Login from '../../../auth/Login.vue'
+import Branch from '../../admin/Branch.vue'
+import Accounts from '../../admin/Accounts.vue'
+import RequestIngredients from '../../admin/request/Request-Ingredients.vue'
+import LocationBranch from '../../admin/Location-Branch.vue'
+import Production from '../../admin/production/Production.vue'
+import ViewRequest from '../../admin/request/ViewRequest.vue'
 
 import axios from 'axios'
 
@@ -104,46 +99,31 @@ const routes = [
                     path: '/adminstrator/dashboard',
                     component: Dashboard,
                   },
-                  {
-                    path: '/adminstrator/accounts/students',
-                    component: Account1,
-                  },
-                  {
-                    path: '/adminstrator/accounts/faculty',
-                    component: Account2,
-                  },
-                  {
-                    path: '/adminstrator/faculty/regular',
-                    component: Faculty1,
-                  },
-                  {
-                    path: '/adminstrator/faculty/casual',
-                    component: Faculty2,
-                  },
-                  {
-                    path: '/adminstrator/results/allresults',
-                    component: Result1,
-                  },
                    {
-                    path: '/adminstrator/results/overall',
-                    component: Overall,
+                    path: '/adminstrator/accounts',
+                    component: Accounts,
                   },
                   {
-                    path: '/adminstrator/results/regular',
-                    component: Result2,
+                    path: '/adminstrator/branch',
+                    component: Branch,
+                     children: 
+                      [
+                        {
+                          path:'/adminstrator/branch/request/:id',
+                          component: RequestIngredients,
+                        },
+                         {
+                          path:'/adminstrator/branch/production/:id',
+                          component: Production,
+                        },
+                         {
+                          path:'/adminstrator/branch/production/view-request/:id',
+                          component: ViewRequest,
+                        }
+                      ]
                   },
-                  {
-                    path: '/adminstrator/results/casual',
-                    component: Result3,
-                  },
-                  {
-                    path: '/adminstrator/schedule',
-                    component: Schedule,
-                  },
-                  {
-                    path: '/adminstrator/questionaire',
-                    component: Questionaire,
-                  },
+                
+                 
                 ],
              }, 
           ]

@@ -1,17 +1,17 @@
 <script>
 const sidebarMenu = [
-  { path: '/adminstrator/dashboard', icon: 'fa fa-sitemap', title: 'Dashboard'},
-  { path: '/adminstrator/faculty', icon: 'fa fa-store', title: 'Branches',
-    children: [
-      { path: '/adminstrator/faculty/regular', title: 'Branch 1' },
-      { path: '/adminstrator/faculty/casual', title: 'Branch 2' },
-    ]
+  { path: '/adminstrator/dashboard', icon: 'fa fa-chart-line', title: 'Dashboard'},
+  { path: '/adminstrator/branch',icon: 'fa fa-city',  title: 'Branches',
+    // children: [
+    //   { path: '/adminstrator/faculty/regular', title: 'Branch 1' },
+    //   { path: '/adminstrator/faculty/casual', title: 'Branch 2' },
+    // ]
   },
    { path: '/adminstrator/accounts', icon: 'fa fa-users', title: 'Accounts',
-    children: [
-      { path: '/adminstrator/accounts/students', title: 'User 1' },
-      { path: '/adminstrator/accounts/faculty', title: 'User 2' }
-    ]
+    // children: [
+    //   { path: '/adminstrator/accounts/students', title: 'User 1' },
+    //   { path: '/adminstrator/accounts/faculty', title: 'User 2' }
+    // ]
   },
   // { 
   //  path: '/adminstrator/results/allresults', icon: 'fa fa-chart-pie', title: 'Results',

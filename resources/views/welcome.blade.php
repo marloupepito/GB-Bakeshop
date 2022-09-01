@@ -23,6 +23,9 @@
                 span.logo{
                     background-image: url('/images/logo.png') !important;
                 }
+              .active{
+                color: red !important;
+              }
         </style>
     </head>
     <body>
@@ -32,9 +35,9 @@
     </body>
     <script>
         
-             function preventBack() { window.history.forward(); }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () { null };
+        //      function preventBack() { window.history.forward(); }
+        // setTimeout("preventBack()", 0);
+        // window.onunload = function () { null };
         
     </script>
     
