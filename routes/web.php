@@ -32,6 +32,7 @@ Route::get('/{vue?}',function(){
 
 Route::post('/logout','UsersController@logout');
 Route::post('/get_all_branch','UsersController@get_all_branch');
+Route::post('/user_login','UsersController@user_login');
 
 
 
