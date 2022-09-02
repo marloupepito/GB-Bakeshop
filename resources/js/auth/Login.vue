@@ -100,7 +100,7 @@ export default {
             .then(res=>{   
             console.log(res.data.status)     
                 if(res.data.status === 'success' && res.data.user.branch_position === 'personnel'){
-                    window.location ='/personnel/dashboard'
+                    window.location ='/personnel/branch'
                     localStorage.setItem("position", "personnel");
                     localStorage.setItem("branch", res.data.user.branch_name);
                 }else if(res.data.status === 'success' && res.data.user.branch_position === 'admin'){
