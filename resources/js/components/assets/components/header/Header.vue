@@ -39,6 +39,14 @@
 			<!-- BEGIN header-nav -->
 			<div class="navbar-nav">
 				<header-mega-menu v-if="appOptions.appHeaderMegaMenu"></header-mega-menu>
+			<!-- 	<div class="navbar-item navbar-form">
+					<form action="" method="POST" name="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Enter keyword" />
+							<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+				</div> -->
 		<!-- 		<div class="navbar-item navbar-form">
 					<form action="" method="POST" name="search">
 						<div class="form-group">
@@ -63,7 +71,7 @@
 				<b-nav-item-dropdown right menu-class="me-1" class="navbar-item navbar-user dropdown" toggle-class="navbar-link dropdown-toggle d-flex align-items-center" no-caret>
 					<template slot="button-content">
 						<img src="/images/logo.png" alt="" /> 
-						<span class="d-none d-md-inline">Adminstrator</span> <b class="caret"></b>
+						<span class="d-none d-md-inline">{{user}}</span> <b class="caret"></b>
 					</template>
 				
 					<div class="dropdown-divider"></div>
@@ -95,15 +103,17 @@ export default {
 			
 		},
   data() {
+		const p =  localStorage.getItem("position");
 		return {
-			appOptions: AppOptions
+			appOptions: AppOptions,
+			user:p === 'admin'?"Adminstrator":"Personnel"
 		}
   },
 	methods: {
 		logout(){
 			axios.post('/logout')
 			.then(res=>{
-				window.location='/'
+				 this.$router.push({ path: '/'})
 			})
 		},
 		home(){

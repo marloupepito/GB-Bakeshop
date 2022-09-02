@@ -76,18 +76,64 @@ import RequestIngredients from '../../admin/request/Request-Ingredients.vue'
 import LocationBranch from '../../admin/Location-Branch.vue'
 import Production from '../../admin/production/Production.vue'
 import ViewRequest from '../../admin/request/ViewRequest.vue'
+import Login from '../../../auth/Login.vue'
+
 
 import axios from 'axios'
-
+import Personnel from '../../personnel/Personnel.vue'
+import PBranch from '../../personnel/Branch.vue'
+import PAccounts from '../../personnel/Accounts.vue'
+import PIngredients from '../../personnel/Ingredients.vue'
+import PEmployees from '../../personnel/Employees.vue'
+const p =  localStorage.getItem("position");
 
 const routes = [
             { path: '*', component: ExtraError},
+             { path: '/', component: Login},
+             { path: '/personnel', 
+                component: Personnel,
+                 beforeEnter: (to, from, next) => {
+                    axios.get('/authenticated')
+                    .then(res=>{
+                      next()
+                      if(p === 'admin'){
+                        this.$router.push({ path: '/adminstrator/dashboard'})
+                      }
+                    })
+                    .catch(err=>{
+                      return next({ path: '/'})
+                    })
+                  },
+                children: 
+                [ 
+                {
+                    path: '/personnel/branch',
+                    component: PBranch,
+                  },
+                  {
+                    path: '/personnel/ingredients',
+                    component: PIngredients,
+                  },
+                   {
+                    path: '/personnel/breads',
+                    component: Accounts,
+                  },
+                   {
+                    path: '/personnel/employees',
+                    component: PEmployees,
+                  },
+                  
+                ],
+             },
               { path: '/adminstrator', 
                 component: Administrator,
                  beforeEnter: (to, from, next) => {
                     axios.get('/authenticated')
                     .then(res=>{
                       next()
+                      if(p === 'personnel'){
+                        this.$router.push({ path: '/personnel/dashboard'})
+                      }
                     })
                     .catch(err=>{
                       return next({ path: '/'})
@@ -117,7 +163,7 @@ const routes = [
                           component: Production,
                         },
                          {
-                          path:'/adminstrator/branch/production/view-request/:id',
+                          path:'/adminstrator/branch/request/view-request/:id',
                           component: ViewRequest,
                         }
                       ]

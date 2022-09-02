@@ -1,6 +1,6 @@
 <script>
 const appOptions = {
-	appTheme: 'red',
+	appTheme: 'danger',
 	appDarkMode: false,
 	appGradientEnabled: true,
   appSidebarMinified: false,
@@ -8,7 +8,7 @@ const appOptions = {
   appSidebarEnd: false,
   appSidebarTwo: false,
   appSidebarWide: false,
-  appSidebarLight: true,
+  appSidebarLight: false,
   appSidebarTransparent: false,
   appSidebarMobileToggled: false,
   appSidebarEndMobileToggled: false,

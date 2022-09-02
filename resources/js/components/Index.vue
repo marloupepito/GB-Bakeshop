@@ -1,11 +1,7 @@
 <template>
 	<div>
 		
-		<div v-if="pathname === '/'">
-			<Login />
-		</div>
-		
-		<div v-else>
+		<div>
 			<div class="app" v-if="!appOptions.appEmpty" v-bind:class="{
 				'app-header-fixed': appOptions.appHeaderFixed && !appOptions.appHeaderNone,
 				'app-sidebar-fixed': appOptions.appSidebarFixed,
@@ -59,6 +55,7 @@ import Login from './../auth/Login.vue'
 import EvaluationForm from './homepage/Evaluation-Form.vue'
 import HowToEvaluate from './homepage/How-to-evaluate.vue'
 const path = window.location.pathname
+import axios from 'axios'
 export default {
 	name: 'app',
 	components: {
@@ -175,6 +172,17 @@ export default {
 	},
 	mounted() {
 		this.$insProgress.finish()
+			//	 axios.get('/authenticated')
+              //      .then(res=>{
+                //      if(window.location.pathname === '/'){
+                      	// window.location='/adminstrator/dashboard'
+                      	// return next({ path: '/adminstrator/dashboard'})
+                  //     this.$router.push({ path: '/adminstrator/dashboard'})
+                    //  }
+                    //})
+                    //.catch(err=>{
+                      // return next({ path: '/'})
+                    //})
 	},
 	created() {
 		AppOptions.appBodyScrollTop = window.scrollY;

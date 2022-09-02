@@ -1,6 +1,6 @@
 <template>
 	<div class="menu">
-		<div class="menu-profile  bg-red">
+		<div class="menu-profile">
 			<a href="javascript:;" class="menu-profile-link" v-on:click="expand()">
 				<!-- <div class="menu-profile-cover"></div>
 				<div class="menu-profile-image">
@@ -12,7 +12,7 @@
 							<b>GB Bakeshop</b>
 						</div>
 					</div>
-					<small>Administrator</small>
+					<small>{{user}}</small>
 				</div>
 			</a>
 		</div>
@@ -26,9 +26,11 @@ import AppOptions from '../../config/AppOptions.vue'
 export default {
 	name: 'SidebarNavProfile',
 	data() {
+		const p =  localStorage.getItem("position");
 		return {
 			stat: '',
-			appOptions: AppOptions
+			appOptions: AppOptions,
+			user:p === 'admin'?"Adminstrator":"Personnel"
 		}
 	},
 	methods: {

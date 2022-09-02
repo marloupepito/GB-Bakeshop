@@ -9,7 +9,7 @@
 				Perhaps, there pages will help find what you're looking for.
 			</div>
 			<div>
-				<router-link to="/dashboard/v2" class="btn btn-success px-3">Go Home</router-link>
+				<a @click="back" class="btn btn-success px-3">Go Home</a>
 			</div>
 		</div>
 	</div>
@@ -20,8 +20,13 @@
 import AppOptions from '../config/AppOptions.vue'
 
 export default {
+	methods:{
+			back(){
+				window.location='/'
+			}
+		},
 	mounted(){
-		window.location='/login'
+		
 	},
 	created() {
 		AppOptions.appEmpty = true;

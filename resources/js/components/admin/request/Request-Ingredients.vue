@@ -8,11 +8,12 @@
 									<label class="form-check-label" for="emailCheckbox1"></label>
 								</div>
 							</div>
-							<router-link to="/adminstrator/branch/production/view-request/ylagan" class="email-user bg-blue">
+							<router-link to="/adminstrator/branch/request/view-request/ylagan" class="email-user bg-blue">
 								<span class="text-white">F</span>
 							</router-link>
+							
 							<div class="email-info">
-								<router-link to="/adminstrator/branch/production/view-request/ylagan">
+								<router-link to="/adminstrator/branch/request/view-request/ylagan">
 									<span class="email-sender">Facebook Blueprint</span>
 									<span class="email-title">Pending marketing tips, how-to video, and more!</span>
 									<span class="email-desc">Today</span>
@@ -27,11 +28,11 @@
 									<label class="form-check-label" for="emailCheckbox2"></label>
 								</div>
 							</div>
-							<router-link to="/adminstrator/branch/production/view-request/endrina" class="email-user bg-indigo">
+							<router-link to="/adminstrator/branch/request/view-request/endrina" class="email-user bg-indigo">
 								<span class="text-white">C</span>
 							</router-link>
 							<div class="email-info">
-								<router-link to="/adminstrator/branch/production/view-request/endrina">
+								<router-link to="/adminstrator/branch/request/view-request/endrina">
 									<span class="email-sender">Color Admin</span>
 									<span class="email-title">Color Admin dashboard v2 is ready for live</span>
 									<span class="email-desc">Proin interdum aliquam urna, quis lobortis magna tincidunt ac. Integer sed pulvinar neque...</span>

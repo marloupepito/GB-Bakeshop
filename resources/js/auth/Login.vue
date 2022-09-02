@@ -61,11 +61,18 @@
 
 <script>
 import axios from 'axios'
-
+import AppOptions from '../components/assets/config/AppOptions.vue'
 export default {
 	mounted(){
 			
 		},
+			created() {
+		AppOptions.appEmpty = true;
+	},
+	beforeRouteLeave (to, from, next) {
+		AppOptions.appEmpty = false;
+		next();
+	},
 	data() {
 		return {
 			incorrect:null,
@@ -92,10 +99,15 @@ export default {
             })
             .then(res=>{   
             console.log(res.data.status)     
-                if(res.data.status === 'success'){
-                    window.location ='/adminstrator/dashboard'
+                if(res.data.status === 'success' && res.data.user.branch_position === 'personnel'){
+                    window.location ='/personnel/dashboard'
+                    localStorage.setItem("position", "personnel");
+                    localStorage.setItem("branch", res.data.user.branch_name);
+                }else if(res.data.status === 'success' && res.data.user.branch_position === 'admin'){
+                   window.location ='/adminstrator/dashboard'
+                   localStorage.setItem("position", "admin");
                 }else{
-                  this.incorrect = res.data.status
+                	this.incorrect = res.data.status
                 }
             })
             .catch(err=>{

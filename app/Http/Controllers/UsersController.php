@@ -18,7 +18,8 @@ class UsersController extends Controller
 
         if(Auth::attempt($request->only('username','password'))){
             return response()->json([
-                'status' => 'success'
+                'status' => 'success',
+                'user' => Auth::user()
             ]);
         }else{
             return response()->json([
@@ -39,5 +40,13 @@ class UsersController extends Controller
     }
     public function logout(){
       Auth::logout();
+    }
+
+    public function get_all_branch(){
+       $users = User::where('branch_position', '=' ,'personnel')
+        ->get();
+        return response()->json([
+            'status' => $users
+        ]);
     }
 }

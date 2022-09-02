@@ -1,15 +1,15 @@
 <template>
 	<!-- BEGIN mailbox -->
-	<div class="mailbox bg-white ">
+	<div class="mailbox  ">
 		<!-- BEGIN mailbox-sidebar -->
 		<div class="mailbox-sidebar ">
 			<div class="mailbox-sidebar-header d-flex justify-content-center">
 				<b-button v-b-toggle.emailNav data-bs-toggle="collapse" class="btn btn-danger btn-sm me-auto d-block d-lg-none">
 					<i class="fa fa-cog"></i>
 				</b-button>
-				<router-link to="/email/compose" class="btn btn-danger ps-40px pe-40px btn-sm">
+				<a class="btn btn-danger ps-40px pe-40px btn-sm">
 					Add Branch
-				</router-link>
+				</a>
 			</div>
 			<b-collapse class="mailbox-sidebar-content collapse d-lg-block" id="emailNav">
 				<!-- BEGIN scrollbar -->
@@ -17,37 +17,25 @@
 					<div class="nav-title"><b>Branches</b></div>
 					<ul class="nav nav-inbox">
 						<li>
-							<div id="accordion" class="accordion overflow-hidden">
-							  <b-card class="bg-red text-white border-0 rounded-0" no-body>
-							    <b-card-header header-tag="header" class="card-header bg-danger  pointer-cursor px-3 py-10px d-flex align-items-center" v-b-toggle.accordion1>
-							      <i class="fa fa-store fa-lg fa-fw text-white me-2"></i> Ylagan Branch
-							    <span class="badge bg-danger fs-10px rounded-pill ms-auto fw-bolder pt-4px pb-5px px-8px">52</span>
+							<div v-for="(branch, index) in branches" :key="index" id="accordion" class="accordion overflow-hidden" style="padding-right:5px; padding-left:5px">
+							  <b-card no-body>
+							    <b-card-header header-tag="header" class="card-header text-white bg-danger pointer-cursor d-flex align-items-center"  v-b-toggle="'accordion-' + index">
+							      <i class="fa fa-store fa-lg fa-fw  me-2"></i> {{branch.branch_name}}
+							    <span class="badge border fs-10px rounded-pill ms-auto fw-bolder pt-4px pb-5px px-8px">52</span>
 							    </b-card-header>
-							    <b-collapse id="accordion1" accordion="my-accordion">
-							      <b-card-body class="bg-white p-1">
-							     	<router-link to="/adminstrator/branch/production/ylagan" class="btn w-100 btn-sm btn-danger mb-1">
+							    <b-collapse :id="'accordion-'+index" accordion="my-accordion">
+							      <b-card-body>
+							     	<router-link :to="'/adminstrator/branch/production/'+branch.branch_name" class="btn w-100 btn-sm btn-danger mb-1">
 							     		Production
 							     	</router-link>
-							     	<router-link to="/adminstrator/branch/request/ylagan" class="btn w-100 btn-sm btn-danger">
+							     	<router-link :to="'/adminstrator/branch/request/'+branch.branch_name" class="btn w-100 btn-sm btn-danger">
 							     		Request Ingredients
 							     	</router-link>
 							      </b-card-body>
 							    </b-collapse>
 							  </b-card>
 							</div>
-							<hr class="m-0"/>
-							<div id="accordion" class="accordion overflow-hidden">
-							  <b-card class="bg-red text-white border-0 rounded-0" no-body>
-							    <b-card-header header-tag="header" class="card-header bg-red text-white pointer-cursor px-3 py-10px d-flex align-items-center" v-b-toggle.accordion2>
-							      <i class="fa fa-store fa-lg fa-fw text-white me-2"></i> Endrina Branch
-							    </b-card-header>
-							    <b-collapse id="accordion2" accordion="my-accordion">
-							      <b-card-body>
-							     
-							      </b-card-body>
-							    </b-collapse>
-							  </b-card>
-							</div>
+							
 						</li>
 					
 					</ul>
@@ -71,15 +59,10 @@
 							<template #button-content>
 							View All <span class="caret ms-3px"></span>
 							</template>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2"></i> All</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-muted"></i> Unread</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-blue"></i> Contacts</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-success"></i> Groups</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-warning"></i> Newsletters</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-white"></i> Social updates</b-dropdown-item>
-							<b-dropdown-item href="javascript:;"><i class="fa fa-circle fs-9px fa-fw me-2 text-indigo"></i> Everything else</b-dropdown-item>
+							
 						</b-dropdown>
 					</div>
+					
 					<button class="btn btn-sm btn-white me-2"><i class="fa fa-redo"></i></button>
 					<div class="w-100 d-sm-none d-block mb-2 hide" data-email-action="divider"></div>
 					<!-- BEGIN btn-group -->
@@ -91,14 +74,14 @@
 					<!-- END btn-group -->
 					<!-- BEGIN btn-group -->
 					<div class="btn-group ms-auto">
-						<input type="text" name="" >
+						<input type="text" name="" placeholder="search" class="form-control form-control-sm" >
 					</div>
 					<!-- END btn-group -->
 				</div>
 				<!-- END btn-toolbar -->
 			</div>
 			<div class="mailbox-content-body">
-				<vue-custom-scrollbar class="h-100">
+				<vue-custom-scrollbar class="h-100 bg-white">
 					<router-view></router-view>
 				</vue-custom-scrollbar>
 			</div>
@@ -111,13 +94,22 @@
 
 <script>
 import AppOptions from '../assets/config/AppOptions.vue'
+import axios from 'axios'
 
 export default {
+	mounted(){
+		axios.post('/get_all_branch')
+		.then(res=>{
+			this.branches = res.data.status
+		})
+	},
 	data() {
 		AppOptions.appContentFullHeight = true;
 		AppOptions.appContentClass = 'p-0';
 
-		return { }
+		return { 
+			branches:[]
+		}
 	},
 	beforeRouteLeave (to, from, next) {
 		AppOptions.appContentFullHeight = false;

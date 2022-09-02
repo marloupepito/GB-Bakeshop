@@ -23,8 +23,26 @@
                 span.logo{
                     background-image: url('/images/logo.png') !important;
                 }
-              .active{
-                color: red !important;
+              a.nav-link.completed{
+                border-color: #ff4d4d !important;
+                background-color: #ff4d4d !important;
+              }
+              a.nav-link.active{
+                border-color: #ff4d4d !important;
+                background-color: #ff4d4d !important;
+              }
+              a.nav-link.completed:after{
+                border-color: #ff4d4d !important;
+                background-color: #ff4d4d !important;
+              }a.nav-link.active:after{
+                border-color: #ff4d4d !important;
+                background-color: #ff4d4d !important;
+              }
+              .bg-danger{
+                 background-color: #ff4d4d !important;
+              }
+              .btn-danger{
+                background-color: #ff4d4d !important;
               }
         </style>
     </head>

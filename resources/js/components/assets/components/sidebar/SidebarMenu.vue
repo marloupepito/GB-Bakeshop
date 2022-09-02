@@ -1,5 +1,6 @@
 <script>
-const sidebarMenu = [
+const p =  localStorage.getItem("position");
+const sidebarMenu = p === 'admin'?[
   { path: '/adminstrator/dashboard', icon: 'fa fa-chart-line', title: 'Dashboard'},
   { path: '/adminstrator/branch',icon: 'fa fa-city',  title: 'Branches',
     // children: [
@@ -13,17 +14,16 @@ const sidebarMenu = [
     //   { path: '/adminstrator/accounts/faculty', title: 'User 2' }
     // ]
   },
-  // { 
-  //  path: '/adminstrator/results/allresults', icon: 'fa fa-chart-pie', title: 'Results',
-  //   children: [
-  //     { path: '/adminstrator/results/allresults', title: 'All Results' },
-  //     { path: '/adminstrator/results/regular', title: 'Regular Employee Results' },
-  //     { path: '/adminstrator/results/casual', title: 'Casual Employee Results' }
-  //   ]
-  // },
-  //  { path: '/adminstrator/schedule', icon: 'fa fa-calendar', title: 'Schedule'},
-  // { path: '/adminstrator/questionaire', icon: 'fa fa-pen', title: 'Questionaire'},
-  
+]:[
+  { path: '/personnel/branch',icon: 'fa fa-store',  title: localStorage.getItem("branch"),
+    // children: [
+    //   { path: '/personnel/faculty/regular', title: 'Branch 1' },
+    //   { path: '/personnel/faculty/casual', title: 'Branch 2' },
+    // ]
+  },
+   { path: '/personnel/ingredients', icon: 'fa fa-cart-plus', title: 'Ingredients'},
+   { path: '/personnel/breads', icon: 'fa fa-cookie', title: 'Breads'},
+   { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},
 ]
 
 export default sidebarMenu;
