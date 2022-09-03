@@ -26,6 +26,23 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('ingredients', function (Blueprint $table) {
+            $table->id();
+            $table->string('ingredients_name')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+         Schema::create('ingredients_request', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_id');
+            $table->string('ingredients_name')->nullable();
+            $table->string('ingredients_quantity')->nullable();
+            $table->string('ingredients_status')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
         
 
     }

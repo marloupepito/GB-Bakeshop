@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\EvaluatorController;
 use App\http\Controllers\UsersController;
+use App\http\Controllers\IngredientsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,9 @@ Route::get('/{vue?}',function(){
 Route::post('/logout','UsersController@logout');
 Route::post('/get_all_branch','UsersController@get_all_branch');
 Route::post('/user_login','UsersController@user_login');
+
+
+Route::post('/get_all_ingredients','IngredientsController@get_all_ingredients');
 
 
 

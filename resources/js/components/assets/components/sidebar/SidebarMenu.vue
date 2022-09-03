@@ -21,8 +21,13 @@ const sidebarMenu = p === 'admin'?[
     //   { path: '/personnel/faculty/casual', title: 'Branch 2' },
     // ]
   },
-   { path: '/personnel/ingredients', icon: 'fa fa-cart-plus', title: 'Ingredients'},
-   { path: '/personnel/breads', icon: 'fa fa-cookie', title: 'Breads'},
+   { path: '/personnel/ingredients', icon: 'fa fa-cart-plus', title: 'Ingredients',
+     children: [
+      { path: '/personnel/ingredients/request', title: 'Request Ingredients' },
+      { path: '/personnel/ingredients/history', title: 'Request History' }
+    ]
+  },
+   { path: '/personnel/breads', icon: 'fa fa-bread-slice', title: 'Breads'},
    { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},
 ]
 

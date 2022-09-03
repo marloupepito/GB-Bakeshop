@@ -83,8 +83,11 @@ import axios from 'axios'
 import Personnel from '../../personnel/Personnel.vue'
 import PBranch from '../../personnel/Branch.vue'
 import PAccounts from '../../personnel/Accounts.vue'
-import PIngredients from '../../personnel/Ingredients.vue'
 import PEmployees from '../../personnel/Employees.vue'
+
+import PIngredients from '../../personnel/ingredients/Ingredients.vue'
+import PRequest1 from '../../personnel/ingredients/Request1.vue'
+import PRequest2 from '../../personnel/ingredients/Request2.vue'
 const p =  localStorage.getItem("position");
 
 const routes = [
@@ -113,6 +116,17 @@ const routes = [
                   {
                     path: '/personnel/ingredients',
                     component: PIngredients,
+                    children: 
+                      [
+                        {
+                          path: '/personnel/ingredients/request',
+                          component: PRequest1,
+                        },
+                        {
+                          path: '/personnel/ingredients/history',
+                          component: PRequest2,
+                        },
+                      ]
                   },
                    {
                     path: '/personnel/breads',

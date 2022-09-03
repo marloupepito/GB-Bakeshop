@@ -44,6 +44,12 @@
               .btn-danger{
                 background-color: #ff4d4d !important;
               }
+
+           /*   @media only screen and (max-width: 600px) {
+                  div.pos-task-product {
+                    width: 10px;
+                  }
+                }*/
         </style>
     </head>
     <body>
