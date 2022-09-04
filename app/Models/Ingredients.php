@@ -10,6 +10,8 @@ class Ingredients extends Model
     protected $table = 'ingredients';
     use HasFactory;
      protected $fillable = [
-        'ingredients_name'
+        'ingredients_name',
+        'ingredients_quantity',
+        'ingredients_quantity_description'
      ];
 }

@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('ingredients_name')->nullable();
+            $table->string('ingredients_quantity')->nullable();
+            $table->string('ingredients_quantity_description')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
