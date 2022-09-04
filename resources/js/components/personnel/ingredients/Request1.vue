@@ -2,31 +2,10 @@
     <!-- BEGIN pos-booking -->
     <div class="pos pos-booking p-0 bg-white" id="pos-booking">
         <!-- BEGIN pos-booking-header -->
-<div class="nav-wizards-container">
-  <nav class="nav nav-wizards-2 mb-3 mt-3">
-    <!-- completed -->
-    <div class="nav-item col">
-      <a class="nav-link active" href="#">
-        <div class="nav-text">List of Ingredients</div>
-      </a>
-    </div>
 
 
-    <!-- active -->
-    <div class="nav-item col">
-      <a class="nav-link active" href="#">
-        <div class="nav-text">Approved</div>
-      </a>
-    </div>
 
-    <!-- disabled -->
-    <div class="nav-item col">
-      <a class="nav-link border" href="#">
-        <div class="nav-text">Delivered</div>
-      </a>
-    </div>
-  </nav>
-</div>
+
 
 
 
@@ -35,6 +14,12 @@
             <!-- BEGIN pos-booking-content -->
             <div class="pos-booking-content">
                 <div class="pos-booking-content-container" data-scrollbar="true" data-height="100%" data-skip-mobile="true">
+                     <div :class="loading1">
+                              <div style="margin-top:20%;" class="progress rounded-pill mb-2 p-0 text-center">
+                                <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated rounded-pill fs-10px fw-bold" style="width: 100%">Please wait ...</div>
+                              </div>
+                            </div>
+                 <div :class="loading2">
                     <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                     <form @submit="add_ingredient">
@@ -52,9 +37,12 @@
                     </v-select>
                         Quantity
                         <input required class="form-control" v-model="ii" type="number" /><br />
-                        <input type="submit" class="btn btn-danger d-block w-100" />
+                        <input type="submit" value="Add Ingredient" class="btn btn-danger d-block w-100" />
                     </form>
                     </div>
+                      
+                        
+
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                             <a  class="table-booking card border border-danger">
                                 <div class="table-booking-container text-black bg-white">
@@ -76,7 +64,7 @@
                                     <div  class="booking text-black">
                                             <div bg-white class="time text-black font-weight-bold" style="width:25% !important;text-transform:capitalize;">Ingredient Name</div>
                                             <i class="info bg-white fa-2x status fa fa-minus"></i>
-                                            <div  class="font-weight-bold"  style="width:25% !important;text-transform:capitalize;">Kind</div>
+                                            <div  class="font-weight-bold"  style="width:25% !important;text-transform:capitalize;">Package</div>
                                             <div class="font-weight-bold"  style="width:25% !important;text-transform:capitalize;">Quantity</div>
                                             <div  class="font-weight-bold text-center"  style="width:25% !important;text-transform:capitalize;">Option</div>
                                         </div>
@@ -89,13 +77,13 @@
                                             <button @click="cancel(index)" class="btn btn-danger btn-xs w-100"  style="width:25% !important;text-transform:capitalize;">Cancel</button>
                                         </div>
                                      </div>
-                                     <button v-if="dataIngredients.length !== 0" class="btn btn-danger btn-xs d-block w-100">
+                                     <button @click="requestSend" v-if="dataIngredients.length !== 0" class="btn btn-danger btn-xs d-block w-100">
                                         Submit Request
                                      </button>
                                    </div>
                             </a>
                         </div>
-                        
+                      </div>
                     </div>
                 </div>
             </div>
@@ -123,6 +111,8 @@ export default {
       ingredients:[],
       i:'',
       ii:'',
+      loading1:'col-xl-12 d-none  col-lg-12 col-md-12 col-sm-12',
+      loading2:''
     }
   },
 
@@ -139,20 +129,42 @@ export default {
          cancel(e){
             const products_name  =  this.dataIngredients
              products_name.splice(e, 1)
-                console.log(products_name)
 
         },
+        requestSend(){
+           this.loading1='col-xl-12 col-lg-12 col-md-12 col-sm-12'
+           this.loading2='d-none'
+            axios.post('/send_request_form',{
+                data:this.dataIngredients,
+                id:localStorage.getItem("id")
+                })
+                .then(res=>{
+                    this.loading2=''
+                     this.loading1='col-xl-12 d-none col-lg-12 col-md-12 col-sm-12'
+                    const empty =this.dataIngredients.length
+                    this.dataIngredients.splice(0,empty);
+                    this.$swal({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Sending Request Successfully!',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+                })
+                .catch(err=>{
+
+                    })
+            },
       searchIngredients(e){
         this.i = e
         },
         add_ingredient(e){
            e.preventDefault()
-               const data = [this.i,this.ii];
+               const data = [this.i,this.ii,'Package','Pending'];
                 const ingredients = this.dataIngredients
                 if (!ingredients.includes(data)) {
                   ingredients.push(data);
                 }
-                console.log(this.dataIngredients)
                 this.i = []
                 this.ii = ''
         },

@@ -37,6 +37,9 @@
               }a.nav-link.active:after{
                 border-color: #ff4d4d !important;
                 background-color: #ff4d4d !important;
+              }a.nav-link.active:before{
+                border-color: #ff4d4d !important;
+                background-color: #ff4d4d !important;
               }
               .bg-danger{
                  background-color: #ff4d4d !important;

@@ -88,6 +88,8 @@ import PEmployees from '../../personnel/Employees.vue'
 import PIngredients from '../../personnel/ingredients/Ingredients.vue'
 import PRequest1 from '../../personnel/ingredients/Request1.vue'
 import PRequest2 from '../../personnel/ingredients/Request2.vue'
+import PReceived from '../../personnel/ingredients/Received.vue'
+import PTransaction from '../../personnel/ingredients/ViewTransactions.vue'
 const p =  localStorage.getItem("position");
 
 const routes = [
@@ -125,6 +127,14 @@ const routes = [
                         {
                           path: '/personnel/ingredients/history',
                           component: PRequest2,
+                        },
+                        {
+                          path: '/personnel/ingredients/received',
+                          component: PReceived,
+                        },
+                        ,{
+                          path: '/personnel/ingredients/transactions',
+                          component: PTransaction,
                         },
                       ]
                   },

@@ -103,6 +103,7 @@ export default {
                     window.location ='/personnel/branch'
                     localStorage.setItem("position", "personnel");
                     localStorage.setItem("branch", res.data.user.branch_name);
+                    localStorage.setItem("id", res.data.user.id);
                 }else if(res.data.status === 'success' && res.data.user.branch_position === 'admin'){
                    window.location ='/adminstrator/dashboard'
                    localStorage.setItem("position", "admin");

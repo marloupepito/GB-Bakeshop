@@ -22,10 +22,11 @@ const sidebarMenu = p === 'admin'?[
     // ]
   },
    { path: '/personnel/ingredients', icon: 'fa fa-cart-plus', title: 'Ingredients',
-     children: [
-      { path: '/personnel/ingredients/request', title: 'Request Ingredients' },
-      { path: '/personnel/ingredients/history', title: 'Request History' }
-    ]
+    //  children: [
+    //   { path: '/personnel/ingredients/request', title: 'Ingredients Request' },
+    //   { path: '/personnel/ingredients/received', title: 'Ingredients Received' },
+    //   { path: '/personnel/ingredients/history', title: 'Transaction History' }
+    // ]
   },
    { path: '/personnel/breads', icon: 'fa fa-bread-slice', title: 'Breads'},
    { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},

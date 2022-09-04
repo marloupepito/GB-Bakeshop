@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\EvaluatorController;
 use App\http\Controllers\UsersController;
 use App\http\Controllers\IngredientsController;
+use App\http\Controllers\IngredientsRequestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,13 @@ Route::post('/user_login','UsersController@user_login');
 
 
 Route::post('/get_all_ingredients','IngredientsController@get_all_ingredients');
+
+
+Route::post('/send_request_form','IngredientsRequestController@send_request_form');
+
+Route::post('/get_request_from_branch','IngredientsRequestController@get_request_from_branch');
+
+Route::post('/get_only_current_branch_request','IngredientsRequestController@get_only_current_branch_request');
 
 
 

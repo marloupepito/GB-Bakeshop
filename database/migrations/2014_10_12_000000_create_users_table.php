@@ -37,9 +37,11 @@ class CreateUsersTable extends Migration
 
          Schema::create('ingredients_request', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->string('branch_id');
+            $table->string('request_id');
             $table->string('ingredients_name')->nullable();
             $table->string('ingredients_quantity')->nullable();
+            $table->string('ingredients_package')->nullable();
             $table->string('ingredients_status')->nullable();
             $table->rememberToken();
             $table->timestamps();
