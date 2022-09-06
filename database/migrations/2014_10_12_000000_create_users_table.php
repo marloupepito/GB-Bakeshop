@@ -37,12 +37,50 @@ class CreateUsersTable extends Migration
 
          Schema::create('ingredients_request', function (Blueprint $table) {
             $table->id();
-            $table->string('branch_id');
-            $table->string('request_id');
+            $table->string('branch_id')->nullable();
+            $table->string('request_id')->nullable();
             $table->string('ingredients_name')->nullable();
             $table->string('ingredients_quantity')->nullable();
             $table->string('ingredients_package')->nullable();
             $table->string('ingredients_status')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+
+         Schema::create('production', function (Blueprint $table) {
+            $table->id();
+            $table->string('bread_name')->nullable();
+            $table->string('beginning_pcs')->nullable();
+            $table->string('new_production_pcs')->nullable();
+            $table->string('price')->nullable();
+            $table->string('total')->nullable();
+            $table->string('bread_out')->nullable();
+            $table->string('charge_pc')->nullable();
+            $table->string('remaining_pcs')->nullable();
+            $table->string('sold_bread')->nullable();
+            $table->string('sales')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+          Schema::create('inventory_production', function (Blueprint $table) {
+            $table->id();
+            $table->string('branch_id')->nullable();
+            $table->string('cashier_name')->nullable();
+            $table->string('sales_clerk')->nullable();
+            $table->string('trainee')->nullable();
+            $table->string('bread_name')->nullable();
+            $table->string('beginning_pcs')->nullable();
+            $table->string('new_production_pcs')->nullable();
+            $table->string('price')->nullable();
+            $table->string('total')->nullable();
+            $table->string('bread_out')->nullable();
+            $table->string('charge_pc')->nullable();
+            $table->string('remaining_pcs')->nullable();
+            $table->string('sold_bread')->nullable();
+            $table->string('sales')->nullable();
+            $table->string('date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

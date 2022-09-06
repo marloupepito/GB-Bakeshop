@@ -28,7 +28,7 @@ const sidebarMenu = p === 'admin'?[
     //   { path: '/personnel/ingredients/history', title: 'Transaction History' }
     // ]
   },
-   { path: '/personnel/breads', icon: 'fa fa-bread-slice', title: 'Breads'},
+   { path: '/personnel/production', icon: 'fa fa-bread-slice', title: 'Production'},
    { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},
 ]
 

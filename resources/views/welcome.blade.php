@@ -47,12 +47,20 @@
               .btn-danger{
                 background-color: #ff4d4d !important;
               }
-
-           /*   @media only screen and (max-width: 600px) {
-                  div.pos-task-product {
-                    width: 10px;
+              .productionFixed {
+                    position:fixed !important;
                   }
-                }*/
+              @media only screen and (max-width: 600px) {
+                  .productionFixed {
+                    position:'' !important;
+                  }
+                }
+                div.vs__actions{
+                    padding-left: 0px !important;
+                }
+                button.vs__clear{
+                    display: none !important
+                }
         </style>
     </head>
     <body>

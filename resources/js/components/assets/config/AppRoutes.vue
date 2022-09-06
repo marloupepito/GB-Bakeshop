@@ -90,6 +90,10 @@ import PRequest1 from '../../personnel/ingredients/Request1.vue'
 import PRequest2 from '../../personnel/ingredients/Request2.vue'
 import PReceived from '../../personnel/ingredients/Received.vue'
 import PTransaction from '../../personnel/ingredients/ViewTransactions.vue'
+
+import PProduction from '../../personnel/production/Production.vue'
+import PBreadIn from '../../personnel/production/BreadIn.vue'
+import PBreadOut from '../../personnel/production/BreadOut.vue'
 const p =  localStorage.getItem("position");
 
 const routes = [
@@ -139,8 +143,19 @@ const routes = [
                       ]
                   },
                    {
-                    path: '/personnel/breads',
-                    component: Accounts,
+                    path: '/personnel/production',
+                    component: PProduction,
+                    children: 
+                      [
+                        {
+                          path: '/personnel/production/breadin',
+                          component: PBreadIn,
+                        },
+                        {
+                          path: '/personnel/production/breadout',
+                          component: PBreadOut,
+                        },
+                      ]
                   },
                    {
                     path: '/personnel/employees',

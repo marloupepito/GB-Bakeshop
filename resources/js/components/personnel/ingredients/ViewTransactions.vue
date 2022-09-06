@@ -9,14 +9,19 @@
     </div>
 <!-- nav-link active -->
     <div class="nav-item col">
-      <a :class="process ==='Approved' || process ==='Delivered'?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">Approved</div>
+      <a :class="process ==='Approve' || process ==='Delivered'?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Approve</div>
       </a>
     </div>
 
     <div class="nav-item col">
-      <a :class="process ==='Delivered'?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">Delivered</div>
+      <a :class="process ==='Deliver'?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Deliver</div>
+      </a>
+    </div>
+    <div class="nav-item col">
+      <a :class="process ==='Receive'?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Receive</div>
       </a>
     </div>
   </nav>

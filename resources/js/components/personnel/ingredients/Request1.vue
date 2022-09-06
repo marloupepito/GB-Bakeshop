@@ -35,15 +35,27 @@
                                 />
                               </template>
                     </v-select>
+                    Package
+                     <v-select  label="title" class="w-100 is-invalid" :options="['Sako','Baro','Tray','Kilo','Pcs']" v-model="iii">
+                              <template #search="{attributes, events}">
+                                <input
+                                  class="vs__search"
+                                  :required="!iii"
+                                  v-bind="attributes"
+                                  v-on="events"
+                                />
+                              </template>
+                    </v-select>
                         Quantity
                         <input required class="form-control" v-model="ii" type="number" /><br />
                         <input type="submit" value="Add Ingredient" class="btn btn-danger d-block w-100" />
                     </form>
                     </div>
                       
-                        
-
+                    
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+
+                        <vue-custom-scrollbar style="height:66vh">
                             <a  class="table-booking card border border-danger">
                                 <div class="table-booking-container text-black bg-white">
                                     <div class="table-booking-header">
@@ -72,7 +84,7 @@
                                         <div  class="booking text-black"  v-for="(i, index) in dataIngredients">
                                             <div bg-white class="time text-black" style="width:25% !important;text-transform:capitalize;">{{i[0]}}</div>
                                             <i class="info bg-white fa-2x status fa fa-minus"></i>
-                                            <div   style="width:25% !important;text-transform:capitalize;">Sack</div>
+                                            <div   style="width:25% !important;text-transform:capitalize;">{{i[2]}}</div>
                                             <div  style="width:25% !important;text-transform:capitalize;">{{i[1]}}</div>
                                             <button @click="cancel(index)" class="btn btn-danger btn-xs w-100"  style="width:25% !important;text-transform:capitalize;">Cancel</button>
                                         </div>
@@ -82,7 +94,9 @@
                                      </button>
                                    </div>
                             </a>
+                  </vue-custom-scrollbar>
                         </div>
+
                       </div>
                     </div>
                 </div>
@@ -111,6 +125,7 @@ export default {
       ingredients:[],
       i:'',
       ii:'',
+      iii:'',
       loading1:'col-xl-12 d-none  col-lg-12 col-md-12 col-sm-12',
       loading2:''
     }
@@ -160,13 +175,14 @@ export default {
         },
         add_ingredient(e){
            e.preventDefault()
-               const data = [this.i,this.ii,'Package','Pending'];
+               const data = [this.i,this.ii,this.iii,'Pending'];
                 const ingredients = this.dataIngredients
                 if (!ingredients.includes(data)) {
                   ingredients.push(data);
                 }
                 this.i = []
                 this.ii = ''
+                this.iii = ''
         },
         
         hideModal() {
