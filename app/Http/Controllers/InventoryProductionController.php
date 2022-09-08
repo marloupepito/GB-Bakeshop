@@ -32,6 +32,7 @@ class InventoryProductionController extends Controller
              $ingredients->remaining_pcs = '';
              $ingredients->sold_bread = '';
              $ingredients->sales = '';
+             $ingredients->production_status = 'Bread In';
              $ingredients->date = '';
              $ingredients->save();
         }
@@ -47,7 +48,7 @@ class InventoryProductionController extends Controller
              ]);
 
               $request = InventoryProduction::where('branch_id' ,$request->id)
-              ->select('production_id','production_status')->distinct('request_id')->get();
+              ->select('production_id','production_status','created_at')->distinct('request_id')->orderBy('created_at','DESC')->get();
 
                return response()->json([
                 'status' => $request
@@ -81,7 +82,7 @@ class InventoryProductionController extends Controller
                   'remaining_pcs' => $request->data[$i]['remaining_pcs'],
                   'sold_bread' => $request->data[$i]['sold_bread'],
                   'sales' => $request->data[$i]['sales'],
-                  'production_status' => $request->data[$i]['production_status'],
+                  'production_status' => 'Bread Out',
                 ]);
             }
 

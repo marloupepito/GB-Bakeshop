@@ -37,7 +37,7 @@ class IngredientsRequestController extends Controller
              ]);
 
               $request = IngredientsRequest::where('branch_id' ,$request->id)
-              ->select('request_id','ingredients_status')->distinct('request_id')->get();
+              ->select('request_id','ingredients_status','created_at')->distinct('request_id')->orderBy('created_at','DESC')->get();
 
                return response()->json([
                 'status' => $request
