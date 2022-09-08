@@ -19,6 +19,7 @@
                                     <li @click="active(1)" :class="path === '/personnel/production/breadin'?'active':'' "><router-link to="/personnel/production/breadin"><i class="fa-xl fa-fw me-2 fa fa-cloud-arrow-down"></i> Bread In </router-link></li>
 
                                     <li @click="active(2)" :class="path === '/personnel/production/breadout'?'active':'' "><router-link to="/personnel/production/breadout"><i class="fa fa-cloud-arrow-up fa-xl fa-fw me-2"></i> Bread Out </router-link></li>
+                                    
 
 
                                     <!-- <li @click="active(2)"  :class="path === '/personnel/ingredients/received'?'active':'' "><router-link to="/personnel/ingredients/received"><i class="fa fa-flag fa-lg fa-fw me-2"></i> Ingredients Received</router-link></li>
