@@ -1,7 +1,7 @@
 <template>
       <!-- BEGIN mailbox -->
       <div>
-          <table class="table table-bordered">
+     <table class="table table-bordered">
               <thead >
                 <tr class="bg-white productionFixed" >
                   <th width="20%">Name of Bread</th>
@@ -20,10 +20,10 @@
                 <tr v-for="(value,index) in data" :key="index">
                   <td width="20%">{{value.bread_name}}</td>
                   <td width="10%">{{value.beginning_pcs}}</td>
-                  <td width="10%">{{value.new_product_pcs}}</td>
+                  <td width="10%">{{value.new_production_pcs}}</td>
                   <td  width="5%">{{value.price}}</td>
                   <td width="10%">{{value.total}}</td>
-                  <td  width="5%">{{value.bread_out}}</td>
+                  <td  width="5%">{{value.bread_out}}{{value.id}}</td>
                   <td width="10%">{{value.charge_pc}}</td>
                   <td width="10%">{{value.remaining_pcs}}</td>
                   <td width="10%">{{value.sold_bread}}</td>

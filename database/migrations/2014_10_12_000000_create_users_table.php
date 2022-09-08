@@ -51,15 +51,7 @@ class CreateUsersTable extends Migration
          Schema::create('production', function (Blueprint $table) {
             $table->id();
             $table->string('bread_name')->nullable();
-            $table->string('beginning_pcs')->nullable();
-            $table->string('new_production_pcs')->nullable();
             $table->string('price')->nullable();
-            $table->string('total')->nullable();
-            $table->string('bread_out')->nullable();
-            $table->string('charge_pc')->nullable();
-            $table->string('remaining_pcs')->nullable();
-            $table->string('sold_bread')->nullable();
-            $table->string('sales')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -67,6 +59,7 @@ class CreateUsersTable extends Migration
           Schema::create('inventory_production', function (Blueprint $table) {
             $table->id();
             $table->string('branch_id')->nullable();
+            $table->string('production_id')->nullable();
             $table->string('cashier_name')->nullable();
             $table->string('sales_clerk')->nullable();
             $table->string('trainee')->nullable();
@@ -80,6 +73,7 @@ class CreateUsersTable extends Migration
             $table->string('remaining_pcs')->nullable();
             $table->string('sold_bread')->nullable();
             $table->string('sales')->nullable();
+            $table->string('production_status')->nullable();
             $table->string('date')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 			$production->bread_name = 'BINANGKAL';
 			$production->save();
 			$production = new Production;
-			$production->price ='';
+			$production->price ='50';
 			$production->bread_name = 'BIRTHDAY CAKE';
 			$production->save();
 			$production = new Production;

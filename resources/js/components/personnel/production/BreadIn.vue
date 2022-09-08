@@ -80,12 +80,12 @@
                                             <div   style="width:16.6% !important;text-transform:capitalize;">{{i[2]}}</div>
                                             
                                             <div   style="width:16.6% !important;text-transform:capitalize;">{{i[3]}}</div>
-                                             <div   style="width:16.6% !important;text-transform:capitalize;">{{parseInt(i[3])*parseInt(i[1])+parseInt(i[2])}}</div>
+                                             <div   style="width:16.6% !important;text-transform:capitalize;">{{parseInt(i[3])*(parseInt(i[1])+parseInt(i[2]))}}</div>
                                             <button @click="cancel(index)" class="btn btn-danger btn-xs w-100"  style="width:16.6% !important;text-transform:capitalize;">Cancel</button>
                                         </div>
                                      </div>
-                                     <button @click="requestSend" v-if="databread.length !== 0" class="btn btn-danger btn-xs d-block w-100">
-                                        Submit Request
+                                     <button @click="breadInSend" v-if="databread.length !== 0" class="btn btn-danger btn-xs d-block w-100">
+                                        Submit
                                      </button>
                                    </div>
                             </a>
@@ -140,10 +140,10 @@ export default {
              products_name.splice(e, 1)
 
         },
-        requestSend(){
+        breadInSend(){
            this.loading1='col-xl-12 col-lg-12 col-md-12 col-sm-12'
            this.loading2='d-none'
-            axios.post('/send_request_form',{
+            axios.post('/bread_in',{
                 data:this.databread,
                 id:localStorage.getItem("id")
                 })
@@ -155,7 +155,7 @@ export default {
                     this.$swal({
                       position: 'center',
                       icon: 'success',
-                      title: 'Sending Request Successfully!',
+                      title: 'Bread In created!',
                       showConfirmButton: false,
                       timer: 1500
                     })
@@ -168,7 +168,7 @@ export default {
         const a = e.split(",")
         const b = a[0].split(" ")
         const price =a[2]
-        const bread = b[0]
+        const bread = a[0]
         this.i = bread
         this.iiii = price
         },

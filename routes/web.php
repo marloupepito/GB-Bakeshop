@@ -6,6 +6,7 @@ use App\http\Controllers\UsersController;
 use App\http\Controllers\IngredientsController;
 use App\http\Controllers\IngredientsRequestController;
 use App\http\Controllers\ProductionController;
+use App\http\Controllers\InventoryProductionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,11 @@ Route::post('/get_request_from_branch','IngredientsRequestController@get_request
 Route::post('/get_only_current_branch_request','IngredientsRequestController@get_only_current_branch_request');
 
 Route::post('/get_all_production','ProductionController@get_all_production');
+
+Route::post('/bread_in','InventoryProductionController@bread_in');
+Route::post('/get_bread','InventoryProductionController@get_bread');
+Route::post('/get_specific_production','InventoryProductionController@get_specific_production');
+Route::post('/update_bread_out','InventoryProductionController@update_bread_out');
 
 
 

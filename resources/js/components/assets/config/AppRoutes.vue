@@ -94,6 +94,8 @@ import PTransaction from '../../personnel/ingredients/ViewTransactions.vue'
 import PProduction from '../../personnel/production/Production.vue'
 import PBreadIn from '../../personnel/production/BreadIn.vue'
 import PBreadOut from '../../personnel/production/BreadOut.vue'
+import PFormProduction from '../../personnel/production/FormProduction.vue'
+
 const p =  localStorage.getItem("position");
 
 const routes = [
@@ -154,6 +156,10 @@ const routes = [
                         {
                           path: '/personnel/production/breadout',
                           component: PBreadOut,
+                        },
+                         {
+                          path: '/personnel/production/form-production',
+                          component: PFormProduction,
                         },
                       ]
                   },

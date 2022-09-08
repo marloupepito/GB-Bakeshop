@@ -11,6 +11,7 @@ class InventoryProduction extends Model
     use HasFactory;
     protected $fillable = [
             'branch_id',
+            'production_id',
             'cashier_name',
             'sales_clerk',
             'trainee',
@@ -24,6 +25,7 @@ class InventoryProduction extends Model
             'remaining_pcs',
             'sold_bread',
             'sales',
+            'production_status',
             'date'
      ];
 }
