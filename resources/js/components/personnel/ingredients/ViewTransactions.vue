@@ -3,30 +3,28 @@
 	<div class="nav-wizards-container">
   <nav class="nav nav-wizards-2 mb-3 mt-3">
     <div class="nav-item col">
-      <a :class="process ==='Pending' || process ==='Approved' || process ==='Delivered' ?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">List of Ingredients</div>
+      <a :class="process ==='Pending' || process ==='Approved' || process ==='Received' ?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Requesting</div>
       </a>
     </div>
 <!-- nav-link active -->
     <div class="nav-item col">
-      <a :class="process ==='Approve' || process ==='Delivered'?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">Approve</div>
+      <a :class="process ==='Approved' || process ==='Received'?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Approved</div>
       </a>
     </div>
 
     <div class="nav-item col">
-      <a :class="process ==='Deliver'?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">Deliver</div>
+      <a :class="process ==='Received'?'nav-link active':'nav-link disabled'" href="#">
+        <div class="nav-text">Received</div>
       </a>
     </div>
-    <div class="nav-item col">
-      <a :class="process ==='Receive'?'nav-link active':'nav-link disabled'" href="#">
-        <div class="nav-text">Receive</div>
-      </a>
-    </div>
+
   </nav>
+   
 </div>
 
+<a @click="receivedRequest" :class="process === 'Approved'?'btn btn-danger btn-md  d-block offset-md-9 col-md-3 col-xs-12 col-sm-12':'d-none'" >RECEIVED REQUEST</a>
 
 <table class="table table-striped">
   <thead class="thead-dark">
@@ -62,7 +60,9 @@ export default {
     data: function () {
       return {
         requestData:[],
-        process:''
+        process:'',
+        branchid:'',
+        requestid:''
       }
   },
 
@@ -73,6 +73,8 @@ export default {
       search:search
     })
     .then(res=>{
+      this.requestid = search
+      this.branchid =  localStorage.getItem("id")
       this.requestData =res.data.status
       this.process = res.data.status[0].ingredients_status
     })
@@ -81,7 +83,27 @@ export default {
     })
   },
   methods: {
-       
+       receivedRequest(){
+          axios.post('/accept_request_ingredients',{
+            response:'Received',
+            branchid:this.branchid,
+            requestid:this.requestid
+          })
+        .then(res=>{
+          this.requestData = res.data.status
+          this.process = res.data.status[0].ingredients_status
+           this.$swal({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Received Successfully!',
+                      showConfirmButton: false,
+                      timer: 1000
+                    })
+          })
+      .catch(err=>{
+
+      })
+       }
      
   }
 }

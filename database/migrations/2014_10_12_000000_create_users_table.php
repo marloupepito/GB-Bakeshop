@@ -26,6 +26,15 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('branch', function (Blueprint $table) {
+            $table->id();
+            $table->string('path')->nullable()->unique();
+            $table->string('title')->nullable();
+            $table->string('icon')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('ingredients_name')->nullable();

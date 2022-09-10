@@ -14,7 +14,7 @@
 							<div class="email-info">
 								<router-link :to="'/personnel/ingredients/transactions?'+data.request_id">
 									<span class="email-sender">{{data.request_id}}</span>
-									<span class="email-title">{{data.ingredients_status}}</span>
+									<span class="email-title">{{data.ingredients_status === 'Received'?'Transaction Complete':data.ingredients_status}}</span>
 									<span class="email-desc">Sed scelerisque dui lacus, quis pellentesque lorem tincidunt rhoncus. Nulla accumsan elit pharetra, lacinia turpis nec, varius erat.</span>
 									<span class="email-time">Today</span>
 								</router-link>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IngredientsRequest;
+use App\Models\User;
 class IngredientsRequestController extends Controller
 {
     public function send_request_form(Request $request){
@@ -36,7 +37,9 @@ class IngredientsRequestController extends Controller
                 'id'=>['required'],
              ]);
 
+             $branch = User::where('branch_name' ,$request->id)->first();
               $request = IngredientsRequest::where('branch_id' ,$request->id)
+              ->orWhere('branch_id', $branch['id'])
               ->select('request_id','ingredients_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
                return response()->json([
@@ -56,6 +59,22 @@ class IngredientsRequestController extends Controller
                return response()->json([
                 'status' => $request
             ]);
+     }
+       public function accept_request_ingredients(Request $request){
 
+             $request->validate([
+                'response'=>['required'],
+                'branchid'=>['required'],
+                'requestid'=>['required'],
+             ]);
+
+               IngredientsRequest::where([['branch_id','=',$request->branchid],['request_id','=',$request->requestid]])
+              ->update(['ingredients_status' => $request->response]);
+
+            $ingredients = IngredientsRequest::where([['branch_id','=',$request->branchid],['request_id','=',$request->requestid]])->get();
+            
+               return response()->json([
+                'status' => $ingredients
+            ]);
      }
 }

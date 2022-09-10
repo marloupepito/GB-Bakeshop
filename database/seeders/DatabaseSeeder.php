@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Ingredients;
-
+use App\Models\Branch;
 use App\Models\Production;
 use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
@@ -17,6 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+    		for ($i=0; $i < 5; $i++) { 
+    			$branch = new Branch;
+				$branch->path ='/adminstrator/branch/loading?branch-'.$i;
+				$branch->title = 'Branch '.$i;
+				$branch->icon = 'fa fa-store';
+				$branch->save();
+    		}
 
 			$production = new Production;
 			$production->price ='30';

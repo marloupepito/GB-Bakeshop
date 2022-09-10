@@ -68,16 +68,29 @@ import UserLoginV3 from '../pages/User-login-v3.vue'
 import UserRegisterV3 from '../pages/User-register-v3.vue'
 import HelperCss from '../pages/Helper-css'
 
+
+import Login from '../../../auth/Login.vue'
+
 import Administrator from '../../admin/Administrator.vue'
 import Dashboard from '../../admin/Dashboard.vue'
 import Branch from '../../admin/Branch.vue'
 import Accounts from '../../admin/Accounts.vue'
-import RequestIngredients from '../../admin/request/Request-Ingredients.vue'
+import Loading from '../../admin/Loading.vue'
 import LocationBranch from '../../admin/Location-Branch.vue'
-import Production from '../../admin/production/Production.vue'
-import ViewRequest from '../../admin/request/ViewRequest.vue'
-import Login from '../../../auth/Login.vue'
 
+
+import Production from '../../admin/production/Production.vue'
+import ABreadIn from '../../admin/production/BreadIn.vue'
+import ABreadOut from '../../admin/production/BreadOut.vue'
+
+
+import ARequested from '../../admin/request/Requested.vue'
+import AReceived from '../../admin/request/Received.vue'
+import AApproved from '../../admin/request/Approved.vue'
+import AHistory from '../../admin/request/History.vue'
+import ShowIngredientsRequested from '../../admin/request/ShowIngredientsRequested.vue'
+import ShowIngredientsApproved from '../../admin/request/ShowIngredientsApproved.vue'
+import ShowIngredientsTransactionHistory from '../../admin/request/ShowIngredientsTransactionHistory.vue'
 
 import axios from 'axios'
 import Personnel from '../../personnel/Personnel.vue'
@@ -195,22 +208,46 @@ const routes = [
                     component: Accounts,
                   },
                   {
-                    path: '/adminstrator/branch',
+                    path: '/adminstrator/branch/loading',
+                    component: Loading,
+                  },
+                  {
+                    path: '/adminstrator/branch/:id',
                     component: Branch,
                      children: 
                       [
                         {
-                          path:'/adminstrator/branch/request/:id',
-                          component: RequestIngredients,
+                          path:'/adminstrator/branch/:id/requested',
+                          component: ARequested,
                         },
-                         {
-                          path:'/adminstrator/branch/production/:id',
-                          component: Production,
+                        {
+                          path:'/adminstrator/branch/:id/:id/requested/show',
+                          component: ShowIngredientsRequested,
                         },
-                         {
-                          path:'/adminstrator/branch/request/view-request/:id',
-                          component: ViewRequest,
-                        }
+                        {
+                          path:'/adminstrator/branch/:id/:id/requested/approved',
+                          component: ShowIngredientsApproved,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/:id/requested/history',
+                          component: ShowIngredientsTransactionHistory,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/approved',
+                          component: AApproved,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/history',
+                          component: AHistory,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/breadin',
+                          component: ABreadIn,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/breadout',
+                          component: ABreadOut,
+                        },
                       ]
                   },
                 

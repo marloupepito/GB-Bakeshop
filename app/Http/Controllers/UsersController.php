@@ -42,11 +42,5 @@ class UsersController extends Controller
       Auth::logout();
     }
 
-    public function get_all_branch(){
-       $users = User::where('branch_position', '=' ,'personnel')
-        ->get();
-        return response()->json([
-            'status' => $users
-        ]);
-    }
+   
 }

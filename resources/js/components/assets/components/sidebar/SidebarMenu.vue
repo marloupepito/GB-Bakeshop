@@ -1,20 +1,26 @@
 <script>
 const p =  localStorage.getItem("position");
-const sidebarMenu = p === 'admin'?[
+import axios from 'axios'
+
+const sidebarMenu = []
+
+axios.post('/get_all_branch')
+.then(res=>{
+  if(p === 'admin'){
+  sidebarMenu.push(
   { path: '/adminstrator/dashboard', icon: 'fa fa-chart-line', title: 'Dashboard'},
   { path: '/adminstrator/branch',icon: 'fa fa-city',  title: 'Branches',
-    // children: [
-    //   { path: '/adminstrator/faculty/regular', title: 'Branch 1' },
-    //   { path: '/adminstrator/faculty/casual', title: 'Branch 2' },
-    // ]
+    children:res.data.status.map(a=>a)
   },
    { path: '/adminstrator/accounts', icon: 'fa fa-users', title: 'Accounts',
-    // children: [
-    //   { path: '/adminstrator/accounts/students', title: 'User 1' },
-    //   { path: '/adminstrator/accounts/faculty', title: 'User 2' }
-    // ]
+    children: [
+      { path: '/adminstrator/dashboard', title: 'User 1' },
+      { path: '/adminstrator/accounts/faculty', title: 'User 2' }
+    ]
   },
-]:[
+)
+}else{
+sidebarMenu.push(
   { path: '/personnel/branch',icon: 'fa fa-store',  title: localStorage.getItem("branch"),
     // children: [
     //   { path: '/personnel/faculty/regular', title: 'Branch 1' },
@@ -29,8 +35,16 @@ const sidebarMenu = p === 'admin'?[
     // ]
   },
    { path: '/personnel/production', icon: 'fa fa-bread-slice', title: 'Production'},
-   { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},
-]
+   // { path: '/personnel/employees', icon: 'fa fa-users', title: 'Employees'},
+)
+  
+}
+
+})
+
+
+
+
 
 export default sidebarMenu;
 </script>

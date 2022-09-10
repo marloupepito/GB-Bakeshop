@@ -163,7 +163,7 @@ export default {
                       icon: 'success',
                       title: 'Sending Request Successfully!',
                       showConfirmButton: false,
-                      timer: 1500
+                      timer: 1000
                     })
                 })
                 .catch(err=>{
