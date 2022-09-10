@@ -1,5 +1,6 @@
 <template>
 	<div>
-		Approved
+		
+		cancelled
 	</div>
 </template>

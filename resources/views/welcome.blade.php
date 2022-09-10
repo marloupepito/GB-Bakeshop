@@ -61,6 +61,7 @@
                 button.vs__clear{
                     display: none !important
                 }
+              
                
         </style>
     </head>

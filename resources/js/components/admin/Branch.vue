@@ -14,56 +14,38 @@
 			<b-collapse class="mailbox-sidebar-content collapse d-lg-block" id="emailNav">
 				<!-- BEGIN scrollbar -->
 				<vue-custom-scrollbar class="h-100">
-					<div class="nav-title"><b>Branches</b></div>
-					<ul class="nav nav-inbox">
-						<li>
-							<div id="accordion" class="accordion overflow-hidden" style="padding-right:5px; padding-left:5px">
-							  <b-card no-body>
-							    <b-card-header header-tag="header" class="card-header text-white bg-danger pointer-cursor d-flex align-items-center"  v-b-toggle="'accordion-1' ">
-							      <i class="fa fa-store fa-lg fa-fw  me-2"></i> Ingredients
-							    <span class="badge border fs-10px rounded-pill ms-auto fw-bolder pt-4px pb-5px px-8px">52</span>
-							    </b-card-header>
-							    <b-collapse :visible="nav === 'requested' || nav === 'approved' || nav === 'history'?true:false"  :id="'accordion-1'" accordion="my-accordion">
-							      <b-card-body>
-							     	<a @click="Irequested(branch)" :class="nav==='requested'?navbar2:navbar">
-							     		Ingredients Requested
-							     	</a>
-							     	<a @click="Iapproved(branch)" :class="nav==='approved'?navbar2:navbar">
-							     		Ingredients Approved
-							     	</a>
-							     	<a @click="Thistory(branch)" :class="nav==='history'?navbar2:navbar">
-							     		Transaction History
-							     	</a>
-							      </b-card-body>
-							    </b-collapse>
-							  </b-card>
-							</div>
+                              <div class="nav-title"><b>FOLDERS</b></div>
+                              <ul class="nav nav-inbox">
+                                    <li @click="Irequested(branch)" :class="nav==='requested'?'active':''" >
+                                    	<a>
+                                    		<i class="fa fa-pen-to-square fa-lg fa-fw me-2"></i> Requested
+                                    		<span class="badge bg-gray-600 fs-10px rounded-pill ms-auto fw-bolder pt-4px pb-5px px-8px">52</span>
+                                    	</a>
+                                    </li>
 
-							<div id="accordion" class="accordion overflow-hidden" style="padding-right:5px; padding-left:5px">
-							  <b-card no-body>
-							    <b-card-header header-tag="header" class="card-header text-white bg-danger pointer-cursor d-flex align-items-center"  v-b-toggle="'accordion-2' ">
-							      <i class="fa fa-store fa-lg fa-fw  me-2"></i> Production
-							    <span class="badge border fs-10px rounded-pill ms-auto fw-bolder pt-4px pb-5px px-8px">52</span>
-							    </b-card-header>
-							    <b-collapse :visible="nav === 'breadin' || nav === 'breadout'?true:false" :id="'accordion-2'" accordion="my-accordion">
-							      <b-card-body>
-							     	<a @click="BreadIn(branch)" :class="nav==='breadin'?navbar2:navbar">
-							     		Bread In
-							     	</a>
-							     	<a @click="BreadOut(branch)":class="nav==='breadout'?navbar2:navbar">
-							     		Bread Out
-							     	</a>
-							      </b-card-body>
-							    </b-collapse>
-							  </b-card>
-							</div>
-							
-						</li>
-					
-					</ul>
-					
-				</vue-custom-scrollbar>
-				<!-- END scrollbar -->
+                                    <li  @click="BreadProduction(branch)" :class="nav==='production'?'active':''" >
+                                    		<a>
+                                    		<i class="fa fa-chalkboard-user fa-lg fa-fw me-2"></i> Production
+                                    	</a>
+                                    </li>
+
+                                    <li  @click="Icancelled(branch)" :class="nav==='cancelled'?'active':''" >
+                                    		<a>
+                                    		<i class="fa fa-rectangle-xmark fa-lg fa-fw me-2"></i> Cancellation
+                                    	</a>
+                                    </li>
+
+                                     <li @click="Thistory(branch)" :class="nav==='history'?'active':''" >
+                                    		<a>
+                                    		<i class="fa fa-clock-rotate-left fa-lg fa-fw me-2"></i>History
+                                    	</a>
+                                    </li>
+                                 
+                                   
+                              </ul>
+                             
+                        </vue-custom-scrollbar>
+				<!-- END scrollbar  share-from-square share-from-square -->
 			</b-collapse>
 		</div>
 		<!-- END mailbox-sidebar -->
@@ -178,26 +160,22 @@ export default {
 			.catch(res=>{})
 			this.nav = 'requested'
 		},
-		Iapproved(e){
-			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/approved' })
+		Icancelled(e){
+			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/cancelled' })
 			.catch(res=>{})
-			this.nav = 'approved'
+			this.nav = 'cancelled'
 		},
 		Thistory(e){
 			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/history' })
 			.catch(res=>{})
 			this.nav = 'history'
 		},
-		BreadIn(e){
-			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/breadin' })
+		BreadProduction(e){
+			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/production' })
 			.catch(res=>{})
-			this.nav = 'breadin'
+			this.nav = 'production'
 		},
-		BreadOut(e){
-			this.$router.push({ path:'/adminstrator/branch/'+e.replace(/ /g,"-")+'/breadout' })
-			.catch(res=>{})
-			this.nav = 'breadout'
-		}
+		
 	}
 }
 </script>

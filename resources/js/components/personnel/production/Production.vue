@@ -22,8 +22,8 @@
                                     
 
 
-                                    <!-- <li @click="active(2)"  :class="path === '/personnel/ingredients/received'?'active':'' "><router-link to="/personnel/ingredients/received"><i class="fa fa-flag fa-lg fa-fw me-2"></i> Ingredients Received</router-link></li>
-                                    <li @click="active(3)" :class="path === '/personnel/ingredients/history'?'active':'' "><router-link to="/personnel/ingredients/history"><i class="fa fa-envelope fa-lg fa-fw me-2"></i> Transaction History</router-link></li> -->
+                                    <!-- <li @click="active(2)"  :class="path === '/personnel/ingredients/received'?'active':'' "><router-link to="/personnel/ingredients/received"><i class="fa fa-clipboard fa-lg fa-fw me-2"></i> Ingredients Received</router-link></li>
+                                    <li @click="active(3)" :class="path === '/personnel/ingredients/history'?'active':'' "><router-link to="/personnel/ingredients/history"><i class="fa fa-clock-rotate-left fa-lg fa-fw me-2"></i> Transaction History</router-link></li> -->
                                    
                               </ul>
                              

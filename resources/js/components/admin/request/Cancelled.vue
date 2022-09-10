@@ -1,5 +1,5 @@
 <template>
 	<div>
-		SIA
+		Cancel
 	</div>
 </template>

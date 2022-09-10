@@ -8,13 +8,13 @@
 									<label class="form-check-label" for="emailCheckbox1"></label>
 								</div>
 							</div>
-							<router-link :to="'/adminstrator/branch/'+branch+'/'+data.request_id+'/requested/show'" class="email-user bg-blue">
-								<span class="text-white">F</span>
+							<router-link :to="'/adminstrator/branch/'+branch+'/'+data.request_id+'/requested/show'" class="email-user bg-danger">
+								<span class="text-white">B</span>
 							</router-link>
 							<div class="email-info">
 								<router-link :to="'/adminstrator/branch/'+branch+'/'+data.request_id+'/requested/show'">
 									<span class="email-sender">{{data.request_id}}</span>
-									<span class="email-title">{{data.ingredients_status === 'Received'?'Transaction Complete':data.ingredients_status}}</span>
+									<span :class="data.ingredients_status === 'Pending'?'email-title badge bg-danger fs-10px rounded-pill ms-auto fw-bolder':data.ingredients_status === 'Approved'? 'email-title badge bg-warning fs-10px rounded-pill ms-auto fw-bolder':'email-title badge bg-teal fs-10px rounded-pill ms-auto fw-bolder'">{{data.ingredients_status === 'Received'?'Transaction Complete':data.ingredients_status}}</span>
 									<span class="email-desc">Sed scelerisque dui lacus, quis pellentesque lorem tincidunt rhoncus. Nulla accumsan elit pharetra, lacinia turpis nec, varius erat.</span>
 									<span class="email-time">Today</span>
 								</router-link>

@@ -79,17 +79,16 @@ import Loading from '../../admin/Loading.vue'
 import LocationBranch from '../../admin/Location-Branch.vue'
 
 
-import Production from '../../admin/production/Production.vue'
+import AProduction from '../../admin/production/Production.vue'
 import ABreadIn from '../../admin/production/BreadIn.vue'
-import ABreadOut from '../../admin/production/BreadOut.vue'
 
 
 import ARequested from '../../admin/request/Requested.vue'
 import AReceived from '../../admin/request/Received.vue'
-import AApproved from '../../admin/request/Approved.vue'
+import Cancelled from '../../admin/request/Cancelled.vue'
 import AHistory from '../../admin/request/History.vue'
 import ShowIngredientsRequested from '../../admin/request/ShowIngredientsRequested.vue'
-import ShowIngredientsApproved from '../../admin/request/ShowIngredientsApproved.vue'
+import ShowIngredientsCancelled from '../../admin/request/ShowIngredientsCancelled.vue'
 import ShowIngredientsTransactionHistory from '../../admin/request/ShowIngredientsTransactionHistory.vue'
 
 import axios from 'axios'
@@ -225,28 +224,24 @@ const routes = [
                           component: ShowIngredientsRequested,
                         },
                         {
-                          path:'/adminstrator/branch/:id/:id/requested/approved',
-                          component: ShowIngredientsApproved,
+                          path:'/adminstrator/branch/:id/:id/requested/cancelled',
+                          component: ShowIngredientsCancelled,
                         },
                         {
                           path:'/adminstrator/branch/:id/:id/requested/history',
                           component: ShowIngredientsTransactionHistory,
                         },
                         {
-                          path:'/adminstrator/branch/:id/approved',
-                          component: AApproved,
+                          path:'/adminstrator/branch/:id/cancelled',
+                          component: Cancelled,
                         },
                         {
                           path:'/adminstrator/branch/:id/history',
                           component: AHistory,
                         },
                         {
-                          path:'/adminstrator/branch/:id/breadin',
-                          component: ABreadIn,
-                        },
-                        {
-                          path:'/adminstrator/branch/:id/breadout',
-                          component: ABreadOut,
+                          path:'/adminstrator/branch/:id/production',
+                          component: AProduction,
                         },
                       ]
                   },

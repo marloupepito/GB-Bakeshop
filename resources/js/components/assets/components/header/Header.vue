@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<router-link to="/adminstrator/dashboard" class="navbar-brand"><span class="navbar-logo"></span> <b>GB&nbsp;</b> Bakeshop</router-link>
+				<router-link to="/adminstrator/dashboard" class="navbar-brand"><span class="navbar-logo"></span> <b class="text-danger">GB&nbsp;</b> Bakeshop</router-link>
 				<button type="button" class="navbar-mobile-toggler" v-on:click="toggleTopMenuMobile" v-if="appOptions.appTopMenu && !appOptions.appSidebarNone">
 					<span class="fa-stack fa-lg text-inverse">
 						<i class="far fa-square fa-stack-2x"></i>
