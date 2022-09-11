@@ -77,7 +77,7 @@ export default {
     	this.branchid =  branchid
         this.requestData =res.data.status
         this.processs = res.data.status[0].ingredients_status
-        console.log(this.processs)
+   
     })
     .catch(err=>{
 

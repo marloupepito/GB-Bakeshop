@@ -80,8 +80,7 @@ import LocationBranch from '../../admin/Location-Branch.vue'
 
 
 import AProduction from '../../admin/production/Production.vue'
-import ABreadIn from '../../admin/production/BreadIn.vue'
-
+import AProductionForm from '../../admin/production/Production-Form.vue'
 
 import ARequested from '../../admin/request/Requested.vue'
 import AReceived from '../../admin/request/Received.vue'
@@ -242,6 +241,10 @@ const routes = [
                         {
                           path:'/adminstrator/branch/:id/production',
                           component: AProduction,
+                        },
+                        {
+                          path:'/adminstrator/branch/:id/:id/production/form',
+                          component: AProductionForm,
                         },
                       ]
                   },
