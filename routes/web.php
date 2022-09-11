@@ -8,6 +8,7 @@ use App\http\Controllers\IngredientsRequestController;
 use App\http\Controllers\ProductionController;
 use App\http\Controllers\InventoryProductionController;
 use App\http\Controllers\BranchController;
+use App\http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +57,9 @@ Route::post('/bread_in','InventoryProductionController@bread_in');
 Route::post('/get_bread','InventoryProductionController@get_bread');
 Route::post('/get_specific_production','InventoryProductionController@get_specific_production');
 Route::post('/update_bread_out','InventoryProductionController@update_bread_out');
+
+
+Route::post('/get_notification','NotificationController@get_notification');
 
 
 

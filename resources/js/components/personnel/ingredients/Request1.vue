@@ -126,6 +126,7 @@ export default {
       i:'',
       ii:'',
       iii:'',
+      branch:localStorage.getItem("branch"),
       loading1:'col-xl-12 d-none  col-lg-12 col-md-12 col-sm-12',
       loading2:''
     }
@@ -151,7 +152,8 @@ export default {
            this.loading2='d-none'
             axios.post('/send_request_form',{
                 data:this.dataIngredients,
-                id:localStorage.getItem("id")
+                id:localStorage.getItem("id"),
+                branch:this.branch
                 })
                 .then(res=>{
                     this.loading2=''

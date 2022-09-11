@@ -12,6 +12,7 @@ class IngredientsRequestController extends Controller
         $request->validate([
             'data'=>['required'],
             'id'=>['required'],
+            'branch'=>['required'],
         ]);
 
         $request_id =rand(1000000000,9999999999);
@@ -21,6 +22,7 @@ class IngredientsRequestController extends Controller
              $ingredients = new IngredientsRequest;
              $ingredients->branch_id = $request->id;
              $ingredients->request_id = $request_id;
+             $ingredients->branch_name = $request->branch;
              $ingredients->ingredients_name = $request->data[$i][0];
              $ingredients->ingredients_quantity = $request->data[$i][1];
              $ingredients->ingredients_package = $request->data[$i][2];

@@ -121,6 +121,8 @@ export default {
       i:'',
       ii:'',
       iii:'',
+      iiii:'',
+      branch:localStorage.getItem("branch"),
       loading1:'col-xl-12 d-none  col-lg-12 col-md-12 col-sm-12',
       loading2:''
     }
@@ -145,7 +147,8 @@ export default {
            this.loading2='d-none'
             axios.post('/bread_in',{
                 data:this.databread,
-                id:localStorage.getItem("id")
+                id:localStorage.getItem("id"),
+                branch:this.branch
                 })
                 .then(res=>{
                     this.loading2=''
@@ -174,7 +177,7 @@ export default {
         },
         add_ingredient(e){
            e.preventDefault()
-               const data = [this.i,this.ii,this.iii,this.iiii];
+               const data = [this.i,this.ii,this.iii,this.iiiii];
                 const bread = this.databread
                 if (!bread.includes(data)) {
                   bread.push(data);

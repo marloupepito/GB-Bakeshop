@@ -10,6 +10,8 @@ class InventoryProductionController extends Controller
           $request->validate([
             'data'=>['required'],
             'id'=>['required'],
+            'branch'=>['required'],
+
         ]);
 
         $production_id =rand(1000000000,9999999999);
@@ -26,6 +28,7 @@ class InventoryProductionController extends Controller
              $ingredients->beginning_pcs = $request->data[$i][1];
              $ingredients->new_production_pcs = $request->data[$i][2];
              $ingredients->price = $request->data[$i][3];
+             $ingredients->branch_name = $request->branch;
              $ingredients->total =($request->data[$i][1] + $request->data[$i][2]) * $request->data[$i][3];
              $ingredients->bread_out = '';
              $ingredients->charge_pc = '';

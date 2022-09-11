@@ -11,10 +11,12 @@ class IngredientsRequest extends Model
     use HasFactory;
      protected $fillable = [
            'branch_id',
+           'branch_name',
            'request_id',
            'ingredients_name',
            'ingredients_quantity',
            'ingredients_package',
            'ingredients_status',
+           'notify'
      ];
 }

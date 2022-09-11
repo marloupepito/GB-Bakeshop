@@ -55,6 +55,47 @@
 						</div>
 					</form>
 				</div> -->
+
+				<b-nav-item-dropdown v-if="user ==='admin'" class="navbar-item" menu-class="dropdown-menu media-list" right toggle-class="navbar-link dropdown-toggle icon" no-caret>
+					<template slot="button-content">
+						<i class="fa fa-bell"></i>
+						<span class="badge">{{countnotify}}</span>
+					</template>
+					<div class="dropdown-header bg-danger">NOTIFICATIONS ({{countnotify}})</div>
+					
+				
+
+					<a  v-for="(i, index) in production" @click="gotoProduction(i.branch_name.replace(/ /g,'-'),i.production_id )"
+					 class="dropdown-item media">
+						<div class="media-left">
+							<i class=" fa fa-plus media-object bg-danger"></i>
+						</div>
+					<div class="media-body">
+							<h6 class="media-heading">{{i.branch_name}}</h6>
+							<p>{{i.branch_name}} filled up the production form. Just click to show</p>
+							<div class="text-muted fs-10px">35 minutes ago</div>
+						</div>
+					</a>
+
+
+
+					<a v-for="(i, index) in ingredients" @click="gotoIngredients(i.branch_name.replace(/ /g,'-'),i.request_id)"    class="dropdown-item media">
+						<div class="media-left">
+							<i class="fa fa-envelope media-object bg-danger"></i>
+							<i class="fab fa-google text-warning media-object-icon fs-14px"></i>
+						</div>
+						<div class="media-body">
+							<h6 class="media-heading">{{i.branch_name}}</h6>
+							<p>{{i.branch_name}} is requesting ingredients. Just click to show</p>
+							<div class="text-muted fs-10px">35 minutes ago</div>
+						</div>
+					</a>
+
+
+					<div class="dropdown-footer text-center">
+						<a href="javascript:;" class="text-decoration-none">View more</a>
+					</div>
+				</b-nav-item-dropdown>
 				
 				<b-nav-item-dropdown class="navbar-item" toggle-class="navbar-link dropdown-toggle" no-caret  v-if="appOptions.appHeaderLanguageBar">
 					<template slot="button-content">
@@ -100,16 +141,52 @@ export default {
 		HeaderMegaMenu
 	},
 	mounted(){
-			
+				axios.post('/get_notification')
+				.then(res=>{
+					console.log('ingredients',res.data.status1)
+					console.log('production',res.data.status2)
+					this.ingredients =res.data.status1
+					this.production =res.data.status2
+					this.countnotify = res.data.status1.length + res.data.status2.length
+					})
+				.catch(err=>{
+
+					})
+		},
+		created () {
+			setInterval(() => {
+				axios.post('/get_notification')
+				.then(res=>{
+					console.log('ingredients',res.data.status1)
+					console.log('production',res.data.status2)
+					this.ingredients =res.data.status1
+					this.production =res.data.status2
+					this.countnotify = res.data.status1.length + res.data.status2.length
+					})
+				.catch(err=>{
+
+					})
+			}, 90000)
 		},
   data() {
 		const p =  localStorage.getItem("position");
 		return {
 			appOptions: AppOptions,
-			user:p === 'admin'?"Adminstrator":"Personnel"
+			user:p === 'admin'?"Adminstrator":"Personnel",
+			countnotify:null,
+			ingredients:[],
+			production:[],
+			user:localStorage.getItem("position")
 		}
   },
 	methods: {
+			gotoProduction(branch_name,id){
+
+			window.location ='/adminstrator/branch/'+branch_name+'/'+id+'/production/form'
+			},
+			gotoIngredients(branch_name,id){
+				window.location ='/adminstrator/branch/'+branch_name+'/'+id+'/requested/show' 
+			},
 		logout(){
 			axios.post('/logout')
 			.then(res=>{
