@@ -39,14 +39,14 @@ class IngredientsRequestController extends Controller
                 'id'=>['required'],
              ]);
 
-             $branch = User::where('branch_name' ,$request->id)->first();
+             $branch = User::where('branch_name' ,ucwords($request->id))->first();
 
              if($branch === null){
-                     $requestsss = IngredientsRequest::where('branch_id','=' ,ucwords($request->id))
+                     $requestsss = IngredientsRequest::where('branch_id','=' ,$request->id)
                       ->select('request_id','ingredients_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
                        return response()->json([
-                        'status' => $requestsss
+                        'status' => $requestsss,
                     ]);
              }else{
                      $requestsss = IngredientsRequest::where('branch_id','=',  $branch['id'])
@@ -54,6 +54,7 @@ class IngredientsRequestController extends Controller
 
                        return response()->json([
                         'status' => $requestsss,
+                         'status2' => $branch
                     ]);
              }
              
