@@ -42,24 +42,18 @@ class IngredientsRequestController extends Controller
              $branch = User::where('branch_name' ,$request->id)->first();
 
              if($branch === null){
-                $request = IngredientsRequest::where('branch_id' ,$request->id)
-                      ->select('request_id','ingredients_status','created_at')
-                      ->distinct()
-                      ->orderBy('created_at','DESC')
-                      ->get();
+                     $requestsss = IngredientsRequest::where('branch_id','=' ,$request->id)
+                      ->select('request_id','ingredients_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
                        return response()->json([
-                        'status' => $request,
+                        'status' => $requestsss
                     ]);
              }else{
-                     $request = IngredientsRequest::where('branch_id', $branch['id'])
-                      ->select('request_id','ingredients_status','created_at')
-                      ->distinct()
-                      ->orderBy('created_at','DESC')
-                      ->get();
+                     $requestsss = IngredientsRequest::where('branch_id','=',  $branch['id'])
+                      ->select('request_id','ingredients_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
                        return response()->json([
-                        'status' => $request,
+                        'status' => $requestsss
                     ]);
              }
              
