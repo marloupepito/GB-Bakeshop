@@ -44,6 +44,7 @@ export default {
   	.then(res=>{
   		this.requestData =res.data.status
   		this.branch = localStorage.getItem("admin_branch_id")
+  		
   	})
   	.catch(err=>{
 

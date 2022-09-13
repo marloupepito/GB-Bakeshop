@@ -42,8 +42,7 @@ export default {
   	})
   	.then(res=>{
   		this.requestData =res.data.status
-  		console.log(res.data.status)
-
+  		
   	})
   	.catch(err=>{
 
