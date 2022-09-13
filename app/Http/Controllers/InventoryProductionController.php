@@ -50,7 +50,7 @@ class InventoryProductionController extends Controller
                 'id'=>['required'],
              ]);
 
-              $request = InventoryProduction::where('branch_id' ,$request->id)
+              $request = InventoryProduction::where('branch_id','=' ,$request->id)
               ->select('production_id','production_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
                return response()->json([

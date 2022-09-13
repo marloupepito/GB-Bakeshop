@@ -157,8 +157,6 @@ export default {
 			setInterval(() => {
 				axios.post('/get_notification')
 				.then(res=>{
-					console.log('ingredients',res.data.status1)
-					console.log('production',res.data.status2)
 					this.ingredients =res.data.status1
 					this.production =res.data.status2
 					this.countnotify = res.data.status1.length + res.data.status2.length

@@ -40,13 +40,30 @@ class IngredientsRequestController extends Controller
              ]);
 
              $branch = User::where('branch_name' ,$request->id)->first();
-              $request = IngredientsRequest::where('branch_id' ,$request->id)
-              ->orWhere('branch_id', $branch['id'])
-              ->select('request_id','ingredients_status','created_at')->distinct()->orderBy('created_at','DESC')->get();
 
-               return response()->json([
-                'status' => $request
-            ]);
+             if($branch === null){
+                $request = IngredientsRequest::where('branch_id' ,$request->id)
+                      ->select('request_id','ingredients_status','created_at')
+                      ->distinct()
+                      ->orderBy('created_at','DESC')
+                      ->get();
+
+                       return response()->json([
+                        'status' => $request
+                    ]);
+             }else{
+                     $request = IngredientsRequest::where('branch_id' ,$request->id)
+                      ->orWhere('branch_id', $branch['id'])
+                      ->select('request_id','ingredients_status','created_at')
+                      ->distinct()
+                      ->orderBy('created_at','DESC')
+                      ->get();
+
+                       return response()->json([
+                        'status' => $request
+                    ]);
+             }
+             
 
      }
       public function get_only_current_branch_request(Request $request){
