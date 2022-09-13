@@ -42,8 +42,6 @@ export default {
   	})
   	.then(res=>{
   		this.requestData =res.data.status
-  		console.log('ingredients',res.data.status)
-  		console.log('branch',res.data.status2)
   		
   	})
   	.catch(err=>{

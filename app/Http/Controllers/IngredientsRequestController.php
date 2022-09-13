@@ -50,11 +50,9 @@ class IngredientsRequestController extends Controller
 
                        return response()->json([
                         'status' => $request,
-                        'status2' => $branch,
                     ]);
              }else{
-                     $request = IngredientsRequest::where('branch_id' ,$request->id)
-                     ->orWhere('branch_id', $branch['id'])
+                     $request = IngredientsRequest::where('branch_id', $branch['id'])
                       ->select('request_id','ingredients_status','created_at')
                       ->distinct()
                       ->orderBy('created_at','DESC')
@@ -62,7 +60,6 @@ class IngredientsRequestController extends Controller
 
                        return response()->json([
                         'status' => $request,
-                        'status2' => $branch,
                     ]);
              }
              

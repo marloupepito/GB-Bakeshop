@@ -44,8 +44,7 @@ export default {
   	.then(res=>{
   		this.requestData =res.data.status
   		this.branch = localStorage.getItem("admin_branch_id")
-  		console.log('ingredients',res.data.status)
-  		console.log('branch',res.data.status2)
+  
   	})
   	.catch(err=>{
 
