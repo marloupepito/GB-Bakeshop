@@ -50,6 +50,7 @@ class IngredientsRequestController extends Controller
 
                        return response()->json([
                         'status' => $request,
+                        'status2' => $branch,
                     ]);
              }else{
                      $request = IngredientsRequest::where('branch_id', $branch['id'])
@@ -59,7 +60,8 @@ class IngredientsRequestController extends Controller
                       ->get();
 
                        return response()->json([
-                        'status' => $request
+                        'status' => $request,
+                        'status2' => $branch,
                     ]);
              }
              
